@@ -83,7 +83,7 @@
                   <!-- <a href="#signin" data-toggle="modal"
                     ><i class="fa fa-sign-in" aria-hidden="true"></i
                   ></a> -->
-                  <a href="javascript:void(0)" @click="$router.push('/login')"
+                  <a href="javascript:void(0)" @click="goToAdmin()"
                     ><i class="fa fa-sign-in" aria-hidden="true"></i
                   ></a>
                 </li>
@@ -325,6 +325,10 @@ export default {
       this.currentRoute = route
       this.$router.push(route)
       // this.$router.replace({ path: route })
+    },
+
+    goToAdmin () {
+      window.location.href(`${process.env.VUE_APP_DOMAIN}/login`)
     },
 
     async getEndpoint () {
