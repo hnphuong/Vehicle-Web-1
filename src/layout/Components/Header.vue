@@ -328,7 +328,7 @@ export default {
     },
 
     goToAdmin () {
-      window.location.href(`${process.env.VUE_APP_DOMAIN}/login`)
+      window.location.href = `${process.env.VUE_APP_DOMAIN_ADMIN}/login`
     },
 
     async getEndpoint () {
