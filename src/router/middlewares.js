@@ -40,6 +40,11 @@ export async function getLocalDataMiddleware (to, from, next) {
 }
 
 export async function getEndpointConfigMiddleware (to, from, next) {
+  // if (!localStorage.getItem('previouslyVisited')) {
+  //   location.reload()
+  //   localStorage.setItem('previouslyVisited', 'true');
+  // }
+
   const endPointConfig = $store.state.endpoint.endPointConfig
   await $store.dispatch('endpoint/getEndpointConfig')
   next()

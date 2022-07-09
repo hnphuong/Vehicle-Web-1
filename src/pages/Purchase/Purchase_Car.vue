@@ -29,9 +29,11 @@
                         <input
                           type="text"
                           class="form-control"
+                          v-model="selectData.keySearch"
+                          @keyup.enter="searchCar(currentTab)"
                           placeholder="Nhập từ khoá..."
                         />
-                        <button class="foo_subs_btn" @click="searchCar()">
+                        <button class="foo_subs_btn" @click="searchCar(currentTab)">
                           <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                       </div>
@@ -43,7 +45,7 @@
                         <li v-for="item in transportOptions" :key="item.id">
                           <label class="brnds_check_label">
                             {{ item.text }}
-                            <input :value="item.id" type="checkbox" @change="searchCar()" v-model="selectedBrand" name="check" />
+                            <input :value="item.id" type="checkbox" @change="checkBrand(item.id)" v-model="selectedBrand" name="check" />
                             <!-- <b-form-checkbox :value="item.id" v-model="selectedBrand" name="check"></b-form-checkbox> -->
                             <span class="label-text"></span>
                           </label>
@@ -51,67 +53,18 @@
                       </ul>
                     </div>
                     <!--Colors-->
-                    <!-- <div class="impl_product_color widget woocommerce">
+                    <div class="impl_product_color widget woocommerce">
                       <h2 class="widget-title">color</h2>
                       <ul>
-                        <li>
+                        <li v-for="(item, index) in colorList" :key="index">
                           <label class="brnds_check_label">
-                            black
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            blue
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            white
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            yellow
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            red
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            grey
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            brown
-                            <input type="checkbox" name="check" />
-                            <span class="label-text"></span>
-                          </label>
-                        </li>
-                        <li>
-                          <label class="brnds_check_label">
-                            orange
-                            <input type="checkbox" name="check" />
+                            {{ item }}
+                            <input :value="item" @change="checkColor(item)" v-model="exteriorColorSelected" type="checkbox" name="check" />
                             <span class="label-text"></span>
                           </label>
                         </li>
                       </ul>
-                    </div> -->
+                    </div>
                     <!--Price Range-->
                     <div class="impl_product_price widget woocommerce">
                       <h2 class="widget-title">Chọn giá</h2>
@@ -132,17 +85,18 @@
                       </div>
                     </div>
                     <!--Car Type-->
-                    <!-- <div class="impl_product_type widget woocommerce">
+                    <div class="impl_product_type widget woocommerce">
                       <h2 class="widget-title">car type</h2>
                       <ul>
-                        <li><a href="#">Hatchback</a></li>
-                        <li><a href="#">Sedan</a></li>
-                        <li><a href="#">MPV</a></li>
-                        <li><a href="#">SUV</a></li>
-                        <li><a href="#">Couple</a></li>
-                        <li><a href="#">Convertible</a></li>
+                        <li v-for="(item, index) in bodyTypeList" :key="index">
+                          <label class="brnds_check_label">
+                            <input :value="item" @change="checkBodyType(item)" v-model="bodyTypeSelected" type="checkbox" name="check" />
+                            {{ item }}
+                            <span class="label-text"></span>
+                          </label>
+                        </li>
                       </ul>
-                    </div> -->
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-9 col-md-8">
@@ -231,7 +185,7 @@
 import { TransportService } from '@/services/transport.service'
 import { VehicleService } from '@/services/vehicle.service'
 export default {
-  // props: ['dataVehicleList'],
+  props: ['typeTransportCode'],
   created () {
     this.getListTransport()
     // this.searchCar('NEW')
@@ -254,10 +208,12 @@ export default {
       transportOptions: [],
       selectedBrand: [],
       selectData: {
+        keySearch: null,
         transport: null,
-        company: null,
+        brand: null,
         series: null,
         model: null,
+        exteriorColor: null,
         codeCity: null,
         status: null,
         design: null,
@@ -272,7 +228,11 @@ export default {
         limit: 9,
         total: 0
       },
-      currentTab: 'NEW'
+      currentTab: 'NEW',
+      colorList: ['black', 'blue', 'white', 'yellow', 'red', 'grey', 'brown', 'orange'],
+      bodyTypeList: ['Hatchback', 'Sedan', 'MPV', 'SUV', 'Couple', 'Convertible'],
+      exteriorColorSelected: [],
+      bodyTypeSelected: []
     }
   },
 
@@ -292,7 +252,7 @@ export default {
     async getListTransport () {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: 'transport_car'
+          codeParent: this.typeTransportCode
         })
         this.transportOptions = response.data.transportListRes.map((e) => {
           return { id: e.code, text: e.name }
@@ -304,11 +264,14 @@ export default {
     async searchCar(status) {
       try {
         const response = await VehicleService.getVehicleList({
-          codeTransport: this.selectedBrand.length > 0 ? this.selectedBrand[0] : 'transport_car',
+          codeTransport: this.selectedBrand.length > 0 ? this.selectData.brand : this.typeTransportCode,
+          keySearch: this.selectData.keySearch,
+          exteriorColor: this.selectData.exteriorColor,
           minPrice: this.selectData.minPrice * 1000000,
           maxPrice: this.selectData.maxPrice * 1000000,
           minManufactureYear: this.selectData.minManufactureYear,
           maxManufactureYear: this.selectData.maxManufactureYear,
+          bodyType: this.selectData.bodyType,
           status: status,
           limit: this.search.limit,
           page: this.search.page
@@ -327,6 +290,18 @@ export default {
     changeTab (status) {
       this.currentTab = status
       this.searchCar(status)
+    },
+    checkColor (item) {
+      this.exteriorColorSelected = this.exteriorColorSelected.filter((e) => e === item)
+      this.selectData.exteriorColor = this.exteriorColorSelected[0]
+    },
+    checkBrand (item) {
+      this.selectedBrand = this.selectedBrand.filter((e) => e === item)
+      this.selectData.brand = this.selectedBrand[0]
+    },
+    checkBodyType (item) {
+      this.bodyTypeSelected = this.bodyTypeSelected.filter((e) => e === item)
+      this.selectData.bodyType = this.bodyTypeSelected[0]
     }
   }
 }

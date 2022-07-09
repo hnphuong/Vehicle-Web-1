@@ -4,9 +4,7 @@
     <BreadcrumbStart ref="menuStart" name="Ô tô" code="transport_car"></BreadcrumbStart>
 
     <!------ Featured Cars Start ------>
-    <PurchaseCar ref="purchaseCar" :dataVehicleList="dataVehicleListNew"></PurchaseCar>
-
-    <!-- <PurchaseUsed v-show="typeTab === 'USED'" :dataVehicleList="dataVehicleListUsed" @typeTab="changeTab"></PurchaseUsed> -->
+    <PurchaseCar ref="purchaseCar" typeTransportCode="transport_car"></PurchaseCar>
 
   </div>
 </template>
@@ -16,7 +14,6 @@ import BreadcrumbStart from '../Components/Breadcrumbs_Start.vue'
 import { TransportService } from '@/services/transport.service'
 import { mapGetters } from 'vuex'
 import PurchaseCar from '../Purchase/Purchase_Car.vue'
-import PurchaseUsed from '../Purchase/Purchase_Used.vue'
 import { VehicleService } from '@/services/vehicle.service'
 
 export default {
@@ -53,12 +50,11 @@ export default {
 
   components: {
     BreadcrumbStart,
-    PurchaseCar,
-    PurchaseUsed
+    PurchaseCar
   },
 
   mounted () {
-    this.$refs.menuStart.getTransportMenu('transport_car')
+    // this.$refs.menuStart.getTransportMenu('transport_car')
     this.$refs.purchaseCar.searchCar('NEW')
     this.submitSearch()
     this.searchVehicleUsed()

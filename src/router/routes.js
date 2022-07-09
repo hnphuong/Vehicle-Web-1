@@ -11,7 +11,6 @@ import detailTransport from '@/pages/Detail/Car-Detail.vue'
 import sellStep from '@/pages/Sell_Step.vue'
 
 import purchaseNew from '@/pages/Purchase/Purchase_Car.vue'
-import purchaseUsed from '@/pages/Purchase/Purchase_Used.vue'
 import service from '@/pages/Service.vue'
 
 import { DOMAIN_TITLE } from '../.env'
@@ -72,12 +71,6 @@ export const routes = [
     name: 'purchaseNew',
     component: purchaseNew,
     meta: { title: `${DOMAIN_TITLE} | Purchase New`, layout: 'default' }
-  },
-  {
-    path: '/purchase-used',
-    name: 'purchaseUsed',
-    component: purchaseUsed,
-    meta: { title: `${DOMAIN_TITLE} | Purchase Used`, layout: 'default' }
   },
   {
     path: '/service',

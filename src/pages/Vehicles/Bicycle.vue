@@ -4,9 +4,7 @@
      <BreadcrumbStart ref="menuStart" name="Xe đạp" code="transport_bicycle"></BreadcrumbStart>
 
     <!------ Featured Cars Start ------>
-    <PurchaseNew :dataVehicleList="dataVehicleListNew"></PurchaseNew>
-
-    <!-- <PurchaseUsed v-show="typeTab === 'USED'" :dataVehicleList="dataVehicleListUsed" @typeTab="changeTab"></PurchaseUsed> -->
+    <PurchaseNew ref="purchaseCar" typeTransportCode="transport_bicycle"></PurchaseNew>
 
     <!------ About our company Start ------>
     <div class="impl_about_wrapper">
@@ -88,8 +86,7 @@
 <script>
 import { TransportService } from '@/services/transport.service'
 import BreadcrumbStart from '../Components/Breadcrumbs_Start.vue'
-import PurchaseNew from '../Purchase/Purchase_Bicycle.vue'
-import PurchaseUsed from '../Purchase/Purchase_Used.vue'
+import PurchaseNew from '../Purchase/Purchase_Car.vue'
 import { VehicleService } from '@/services/vehicle.service'
 export default {
   data () {
@@ -106,7 +103,8 @@ export default {
   },
 
   mounted () {
-    this.$refs.menuStart.getTransportMenu('transport_bicycle')
+    // this.$refs.menuStart.getTransportMenu('transport_bicycle')
+    this.$refs.purchaseCar.searchCar('NEW')
     setTimeout(() => {
       this.$store.commit('loading/SET_LOADING', {
         loading: false,
@@ -171,8 +169,7 @@ export default {
 
   components: {
     BreadcrumbStart,
-    PurchaseNew,
-    PurchaseUsed
+    PurchaseNew
   }
 }
 </script>

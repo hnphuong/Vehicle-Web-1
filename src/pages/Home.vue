@@ -751,7 +751,7 @@
                     <b-form-select class="select-box" v-model="selectData.model" :options="modelOptions" @change="changeModel"></b-form-select>
                     <b-form-select class="select-box" v-model="selectData.codeCity" :options="provinceOptions"></b-form-select>
                     <b-form-select class="select-box" v-model="selectData.status" :options="statusOptions"></b-form-select>
-                    <b-form-select class="select-box" v-model="selectData.design" :options="designOptions"></b-form-select>
+                    <b-form-select class="select-box" v-model="selectData.bodyType" :options="designOptions"></b-form-select>
                     <b-form-select class="select-box" v-model="selectData.fuel" :options="fuelOptions"></b-form-select>
                   </div>
                 </div>
@@ -1026,7 +1026,7 @@ export default {
         model: null,
         codeCity: null,
         status: null,
-        design: null,
+        bodyType: null,
         fuel: null,
         minPrice: null,
         maxPrice: null,
@@ -1254,6 +1254,8 @@ export default {
           minManufactureYear: this.selectData.minManufactureYear,
           maxManufactureYear: this.selectData.maxManufactureYear,
           status: this.selectData.status,
+          bodyType: this.selectData.bodyType,
+          fuel: this.selectData.fuel,
           limit: this.search.limit,
           page: this.search.page
         })

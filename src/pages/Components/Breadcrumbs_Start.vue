@@ -4,12 +4,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h1><i class="fa fa-car"></i> {{ name }} </h1>
+            <h1>
+              <i class="fa fa-car" v-if="code === 'transport_car'"></i>
+              <i class="fa fa-motorcycle" v-else-if="code === 'transport_motorcycle'"></i>
+              <i class="fa fa-bicycle" v-else-if="code === 'transport_bicycle'"></i>
+              {{ name }} </h1>
             <ol class="breadcrumb">
                 <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">company</li> -->
             </ol>
-            <div class="d-flex justify-content-sm-center mt-5" style=" margin: auto; width: fit-content;">
+
+            <!-- <div class="d-flex justify-content-sm-center mt-5" style=" margin: auto; width: fit-content;">
 
                 <a href="javascript:void(0)" v-show="showBack" @click="actionShowAllMenu" class="menu_pro mr-3 parent-menu">
                   <span><i class="fa fa-angle-double-left"></i></span>
@@ -45,18 +50,13 @@
                   </option>
                 </select>
 
-                <!-- <div class="menu_pro mr-3 parent-menu" v-if="showLastSeleted">
-                  <a href="#" tabindex="-1">
-                    <i class="fa fa-car"></i> {{ selectedMenu }}</a
-                  >
-                </div> -->
-
-            </div>
+            </div> -->
+          
           </div>
         </div>
       </div>
 
-      <div class="impl_searchbox_wrapper mt-5" v-if="showMenuAll">
+      <!-- <div class="impl_searchbox_wrapper mt-5" v-if="showMenuAll">
         <div class="container_search">
           <div class="row">
             <div class="col-lg-12 col-md-12">
@@ -84,8 +84,6 @@
         </div>
       </div>
 
-      <!-- <searchBox v-else-if="showSlider" class="mt-5" @data="receiveData" :menuSearch="menuSearch" :levelMenu="levelMenu"></searchBox> -->
-
       <div v-else class="menu-slider">
         <div class="slider slider-nav1 slick-initialized slick-slider">
           <div class="slick-list draggable d-flex justify-content-center flex-wrap">
@@ -104,7 +102,7 @@
               </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
