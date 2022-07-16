@@ -119,7 +119,8 @@ export default {
     async getTransportMenu () {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: 'transport_bicycle'
+          codeParent: 'transport_bicycle',
+          status: 'ACTIVE'
         })
         this.bicycleMenu = response.data.transportListRes
       } catch (error) {

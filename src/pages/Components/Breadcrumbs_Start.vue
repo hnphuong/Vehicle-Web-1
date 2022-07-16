@@ -162,7 +162,8 @@ export default {
     async getTransportMenu (code) {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: code
+          codeParent: code,
+          status: 'ACTIVE'
         })
         this.carsMenu_1 = response.data.transportListRes
         this.menuSearch = this.carsMenu_1
@@ -175,7 +176,8 @@ export default {
     async getTransportMenu_2 (code) {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: code
+          codeParent: code,
+          status: 'ACTIVE'
         })
         this.menuSearch = response.data.transportListRes
         this.levelMenu = response.data.treeTransport ? response.data.treeTransport.length : 2
@@ -187,7 +189,8 @@ export default {
     async getTransportMenu_parent_2 (code) {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: code
+          codeParent: code,
+          status: 'ACTIVE'
         })
         this.carsMenu_2 = response.data.transportListRes
         // this.menuSearch = response.data.transportListRes
@@ -199,7 +202,8 @@ export default {
     async getTransportMenu_parent_3 (code) {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: code
+          codeParent: code,
+          status: 'ACTIVE'
         })
         this.carsMenu_3 = response.data.transportListRes
       } catch (error) {
@@ -286,7 +290,8 @@ export default {
       try {
         this.showMenuAll = true
         const response = await TransportService.getListTransport({
-          codeParent: item.code
+          codeParent: item.code,
+          status: 'ACTIVE'
         })
         this.dataSelect = response.data.transportListRes
         this.selectedTree_1 = item.name

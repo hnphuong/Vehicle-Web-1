@@ -345,7 +345,8 @@ export default {
       try {
         const response = await TransportService.getListTransportHeader({
           data: {
-            codeParent: 'transport'
+            codeParent: 'transport',
+            status: 'ACTIVE'
           },
           endpoint: this.endpoint['hnp.luxury.transport.get-list-transport']
         })

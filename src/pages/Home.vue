@@ -1122,7 +1122,8 @@ export default {
     async getListTransport () {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: 'transport'
+          codeParent: 'transport',
+          status: 'ACTIVE'
         })
         response.data.transportListRes.map((e) => {
           this.transportOptions.push({ value: e.code, text: e.name })
@@ -1139,7 +1140,8 @@ export default {
         this.selectData.company = null
         this.companyOptions.push({ value: null, text: 'Chọn hãng' })
         const response = await TransportService.getListTransport({
-          codeParent: code ? code : ''
+          codeParent: code ? code : '',
+          status: 'ACTIVE'
         })
         response.data.transportListRes.shift()
         response.data.transportListRes.map((e) => {
@@ -1160,7 +1162,8 @@ export default {
         this.selectData.series = null
         this.selectData.model = null
         const { data } = await TransportService.getListTransport({
-          codeParent: code ? code : ''
+          codeParent: code ? code : '',
+          status: 'ACTIVE'
         })
         const seriesOptions = data.transportListRes.map((e) => {
           return { value: e.code, text: e.name }
@@ -1184,7 +1187,8 @@ export default {
         this.modelOptions = []
         this.selectData.model = null
         const { data } = await TransportService.getListTransport({
-          codeParent: code ? code : ''
+          codeParent: code ? code : '',
+          status: 'ACTIVE'
         })
         const modelOptions = data.transportListRes.map((e) => {
           return { value: e.code, text: e.name }

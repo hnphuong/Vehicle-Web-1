@@ -251,7 +251,8 @@ export default {
     async getListTransport () {
       try {
         const response = await TransportService.getListTransport({
-          codeParent: 'transport_motorcycle'
+          codeParent: 'transport_motorcycle',
+          status: 'ACTIVE'
         })
         this.transportOptions = response.data.transportListRes.map((e) => {
           return { id: e.code, text: e.name }
