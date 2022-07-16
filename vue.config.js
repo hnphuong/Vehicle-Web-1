@@ -6,9 +6,9 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
     port: 8088,
-    public: 'http://123.31.47.4:8088/',
     watchOptions: {
       clientLogLevel: 'warning'
     }
-  }
+  },
+  publicPath: "/"
 }
