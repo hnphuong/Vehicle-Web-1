@@ -31,58 +31,7 @@
                 <li class="impl_search">
                   <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
                 </li>
-                <!-- <li class="cart-popup">
-                  <a href="#"
-                    ><i class="fa fa-shopping-cart" aria-hidden="true"></i
-                  ></a>
-                  <div class="cart-box">
-                    <div class="popup-container">
-                      <div class="cart-entry">
-                        <a href="#" class="image">
-                          <img src="/70x60" alt="" />
-                        </a>
-                        <div class="content">
-                          <a href="#" class="title">Serpent</a>
-                          <p class="quantity">Quantity: 1</p>
-                          <span class="price">$4500.00</span>
-                        </div>
-                        <div class="button-x">
-                          <i class="fa fa-times-circle" aria-hidden="true"></i>
-                        </div>
-                      </div>
-                      <div class="cart-entry">
-                        <a href="#" class="image">
-                          <img src="/70x60" alt="" />
-                        </a>
-                        <div class="content">
-                          <a href="#" class="title">Empire</a>
-                          <p class="quantity">Quantity: 1</p>
-                          <span class="price">$900.00</span>
-                        </div>
-                        <div class="button-x">
-                          <i class="fa fa-times-circle" aria-hidden="true"></i>
-                        </div>
-                      </div>
-                      <div class="summary">
-                        <div class="subtotal">Sub Total</div>
-                        <div class="price-s">$5100.0</div>
-                      </div>
-                      <div class="cart-buttons">
-                        <a href="checkout.html" class="btn impl_btn"
-                          >View Cart</a
-                        >
-                        <a href="checkout.html" class="btn impl_btn"
-                          >Checkout</a
-                        >
-                        <div class="clear"></div>
-                      </div>
-                    </div>
-                  </div>
-                </li> -->
                 <li>
-                  <!-- <a href="#signin" data-toggle="modal"
-                    ><i class="fa fa-sign-in" aria-hidden="true"></i
-                  ></a> -->
                   <a href="javascript:void(0)" @click="goToAdmin()"
                     ><i class="fa fa-sign-in" aria-hidden="true"></i
                   ></a>
@@ -245,9 +194,9 @@
                 /></a>
               </div>
               <a href="#" class="impl_btn">
-                <router-link to="/sell-step">
+                <!-- <router-link to="/sell-step"> -->
                   Đăng ký
-                </router-link>
+                <!-- </router-link> -->
               </a>
               <div class="impl_menu">
                 <nav>

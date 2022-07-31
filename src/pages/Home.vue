@@ -1303,7 +1303,8 @@ export default {
         minPrice: null,
         maxPrice: null,
         minManufactureYear: null,
-        maxManufactureYear: null
+        maxManufactureYear: null,
+        bodyType: null
       }
       this.submitSearch()
     },
