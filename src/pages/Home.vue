@@ -1083,11 +1083,6 @@ export default {
 
   async mounted () {
     // this.loadScriptAll()
-    setTimeout(() => {
-      this.$store.commit('loading/SET_LOADING', {
-        loading: false
-      })
-    }, 2000)
     this.selectData.transport = 'transport_car'
     await this.getListTransport()
     await this.getListCompany(this.selectData.transport)
