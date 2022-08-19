@@ -28,8 +28,10 @@
                 08:00 đến 20:00 kể cả chủ nhật
               </p>
               <ul class="impl_header_icons">
-                <li class="impl_search">
-                  <span><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
+                <li>
+                  <a href="javascript:void(0)" @click="goToRegister()"
+                    ><i class="fa fa-user-plus" aria-hidden="true"></i>
+                  </a>
                 </li>
                 <li>
                   <a href="javascript:void(0)" @click="goToAdmin()"
@@ -278,6 +280,10 @@ export default {
 
     goToAdmin () {
       window.location.href = `${process.env.VUE_APP_DOMAIN_ADMIN}/login`
+    },
+
+    goToRegister () {
+      window.location.href = `${process.env.VUE_APP_DOMAIN_ADMIN}/register`
     },
 
     async getEndpoint () {
