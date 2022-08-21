@@ -260,7 +260,6 @@ export default {
         this.listParameters = listParameters
         this.detailImages = detailImages
         this.description = this.decodeB64toUTF8(this.dataDetail.description)
-        // console.log(this.description)
 
         this.detailImages.images.forEach(item => {
           this.sliderHTML += `<div><img width="570" height="176" src="${item}" alt=""></div>`

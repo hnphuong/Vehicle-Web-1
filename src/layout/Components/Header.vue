@@ -28,11 +28,11 @@
                 08:00 đến 20:00 kể cả chủ nhật
               </p>
               <ul class="impl_header_icons">
-                <li>
+                <!-- <li>
                   <a href="javascript:void(0)" @click="goToRegister()"
                     ><i class="fa fa-user-plus" aria-hidden="true"></i>
                   </a>
-                </li>
+                </li> -->
                 <li>
                   <a href="javascript:void(0)" @click="goToAdmin()"
                     ><i class="fa fa-sign-in" aria-hidden="true"></i
@@ -195,7 +195,7 @@
                     class="img-fluid"
                 /></a>
               </div>
-              <a href="#" class="impl_btn">
+              <a href="javascript:void(0)" @click="goToRegister()" class="impl_btn">
                 <!-- <router-link to="/sell-step"> -->
                   Đăng ký
                 <!-- </router-link> -->
