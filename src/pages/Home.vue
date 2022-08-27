@@ -1099,7 +1099,6 @@ export default {
         // Set a flag so that we know not to reload the page twice.
         localStorage.setItem('reloaded', '1');
         window.location.reload();
-        window.location.reload();
     }
   },
 
@@ -1267,7 +1266,8 @@ export default {
           bodyType: this.selectData.bodyType,
           fuel: this.selectData.fuel,
           limit: this.search.limit,
-          page: this.search.page
+          page: this.search.page,
+          status: 'ACTIVE'
         })
         if (response.code === 1000) {
           this.dataVehicleList = response.data.vehicleList

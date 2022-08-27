@@ -13,6 +13,8 @@ import sellStep from '@/pages/Sell_Step.vue'
 import purchaseNew from '@/pages/Purchase/Purchase_Car.vue'
 import service from '@/pages/Service.vue'
 
+import confirmRegister from '@/pages/Link/Confirm_Register_Email.vue'
+
 import { DOMAIN_TITLE } from '../.env'
 
 export const routes = [
@@ -77,6 +79,13 @@ export const routes = [
     name: 'service',
     component: service,
     meta: { title: `${DOMAIN_TITLE} | Service`, layout: 'default' }
+  },
+
+  {
+    path: '/confirm-register',
+    name: 'confirmRegister',
+    component: confirmRegister,
+    meta: { title: `${DOMAIN_TITLE} | Xác nhận đăng ký`, layout: 'default' }
   }
   
 ]

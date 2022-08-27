@@ -22,4 +22,15 @@ export class VehicleService extends BaseService {
       throw new ErrorWrapper(error, message)
     }
   }
+  
+  static async verifyRegister (params) {
+    try {
+      const response = await this.request({ auth: false }).get(`http://api.sanxesang.com/api/auth/verify-register`, 
+        { params: { verifyRegister: params.verifyRegister }}
+      )
+      return new ResponseWrapper(response, response.data.data)
+    } catch (error) {
+      return error.response
+    }
+  }
 }
