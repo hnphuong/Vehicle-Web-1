@@ -57,8 +57,10 @@ export default {
       try {
         const response = await VehicleService.getVehicleList({
           codeTransport: 'transport_motorcycle',
-          limit: 20,
-          page: 1
+          status: 'ACTIVE',
+          limit: 9,
+          page: 1,
+          statusVehicle : 'ACTIVE'
         })
         if (response.code === 1000) {
           this.dataVehicleListNew = response.data.vehicleList
@@ -75,8 +77,9 @@ export default {
         const response = await VehicleService.getVehicleList({
           codeTransport: 'transport_motorcycle',
           status: 'USED',
-          limit: 20,
-          page: 1
+          limit: 9,
+          page: 1,
+          statusVehicle : 'ACTIVE'
         })
         if (response.code === 1000) {
           this.dataVehicleListUsed = response.data.vehicleList

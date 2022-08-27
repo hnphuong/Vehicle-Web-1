@@ -275,7 +275,8 @@ export default {
           bodyType: this.selectData.bodyType,
           status: status,
           limit: this.search.limit,
-          page: this.search.page
+          page: this.search.page,
+          statusVehicle : 'ACTIVE'
         })
         if (response.code === 1000) {
           this.dataVehicleList = response.data.vehicleList

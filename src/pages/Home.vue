@@ -1267,7 +1267,7 @@ export default {
           fuel: this.selectData.fuel,
           limit: this.search.limit,
           page: this.search.page,
-          status: 'ACTIVE'
+          statusVehicle : 'ACTIVE'
         })
         if (response.code === 1000) {
           this.dataVehicleList = response.data.vehicleList
@@ -1287,7 +1287,8 @@ export default {
           codeTransport: 'transport_car',
           isFavorites: true,
           limit: 20,
-          page: 1
+          page: 1,
+          statusVehicle : 'ACTIVE'
         })
         this.dataVehicleFavorite = response.data.vehicleList
         this.searchFavorite.total = response.totalPage.total
