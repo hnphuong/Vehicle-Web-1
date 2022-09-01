@@ -7,7 +7,9 @@ export class EndpointService extends BaseService {
   static async getConfig () {
     try {
       // const response = await this.request({ auth: true }).post(GET_ENDPOINT_URL)
-      const response = await axios.post(GET_ENDPOINT_URL, {}, {
+      const response = await axios.post(GET_ENDPOINT_URL, {
+        accessModifiers: "PUBLIC"
+      }, {
         // headers: {
         //   Authorization: 'Bearer ' + TOKEN_INSIDE
         // }
