@@ -17,7 +17,7 @@
       <div>
         <slot></slot>
       </div>
-      <Footer/>
+      <Footer :data-config="dataFooter"/>
       <!-- <span class="gotop" @click="scrollToTop()"><img src="@/assets/images/goto.png" alt=""></span> -->
     </div>
   </div>
@@ -27,13 +27,15 @@
 import { mapGetters } from 'vuex'
 import Header from '../Components/Header'
 import Footer from '../Components/Footer'
+import { ConfigService } from '@/services/config.service'
 // import Sidebar from '../Components/Sidebar'
 
 export default {
   name: 'app',
   data () {
     return {
-      firstLoading: true
+      firstLoading: true,
+      dataFooter: {}
     }
   },
   components: {
@@ -43,6 +45,7 @@ export default {
   },
   created () {
     this.firstLoading = true
+    this.fetchDataFooter()
   },
   mounted () {
     setTimeout(() => {
@@ -57,6 +60,16 @@ export default {
   methods: {
     scrollToTop () {
       window.scrollTo(0, 0)
+    },
+    async fetchDataFooter () {
+      try {
+        const { data } = await ConfigService.configFooter({
+          code: "CONFIG_PAGE"
+        })
+        this.dataFooter = data
+      } catch (error) {
+        
+      }
     }
   }
 }

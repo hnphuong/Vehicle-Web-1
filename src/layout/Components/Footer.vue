@@ -1,7 +1,7 @@
 <template>
   <div class="app-footer">
     <!------ Footer Section Start ------>
-    <div class="impl_footer_wrapper">
+    <div class="impl_footer_wrapper" id="footer-wrapper">
         <div class="impl_social_wrapper">
             <ul>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -27,11 +27,16 @@
                         <div class="impl_foo_box">
                             <h1 class="impl_foo_title">Thông Tin</h1>
                             <ul>
-                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Giới thiệu</a></li>
+                                <!-- <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Giới thiệu</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Chính sách sử dụng</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Chính sách bảo mật</a></li>
                                 <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Quy định mua bán</a></li>
-                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Hướng dẫn sử dụng</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i> Hướng dẫn sử dụng</a></li> -->
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Facebook : {{ dataConfig.facebook }} </a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Google : {{ dataConfig.google }} </a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Instagram : {{ dataConfig.instagram }} </a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Twitter : {{ dataConfig.twitter }} </a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Youtube : {{ dataConfig.youtube }} </a></li>
                             </ul>
                         </div>
                     </div>
@@ -42,19 +47,19 @@
                                 <li>
                                     <div class="impl_foo_icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
                                     <div class="impl_foo_text">
-                                        <p>Hotline : 0934.20.20.20</p>
+                                        <p>Hotline : {{ dataConfig.phone }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="impl_foo_icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                                     <div class="impl_foo_text">
-                                        <p>Địa chỉ : 489 Hoàng Quốc Việt, Cầu Giấy, Hà Nội</p>
+                                        <p>Địa chỉ : {{ dataConfig.address }}</p>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="impl_foo_icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                                     <div class="impl_foo_text">
-                                        <a href="#">Email : sanxesang@haiplus.com</a>
+                                        <a href="#">Email : {{ dataConfig.email }} </a>
                                     </div>
                                 </li>
                             </ul>
@@ -90,7 +95,25 @@
 <script>
 export default {
   name: 'Footer',
+  props: {
+    dataConfig: {
+      type: Object,
+      require: true,
+      default: () => {}
+    }
+  },
+  data () {
+    return {
+
+    }
+  },
+  mounted () {
+    document.getElementById('footer-wrapper').style.backgroundImage=`url(${dataConfig.imageFooter})`;
+  },
   components: {
+  },
+  methods: {
+
   }
 }
 </script>
